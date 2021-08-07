@@ -5,7 +5,7 @@ import styles from './Login.module.css';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import { authsliceactions } from '../redux/auth';
-import {useDispatch} from 'react-redux'
+import { useDispatch } from 'react-redux';
 import { useRef } from 'react';
 import { useHistory } from 'react-router';
 
@@ -19,10 +19,10 @@ const LoginComp = () => {
       !emailref.current.value.includes('@') ||
       !passwordref.current.value.length > 3
     ) {
-      seterror(true);
+      // seterror(true);
       return;
     }
-    seterror(false);
+    // seterror(false);
     dispatch(authsliceactions.loginparticipant());
     history.push('/');
   };
@@ -61,7 +61,6 @@ const LoginComp = () => {
                 />
               </div>
             </div>
-
             <div className={`${styles.entry}  row`}>
               <button
                 onClick={submithandler}
