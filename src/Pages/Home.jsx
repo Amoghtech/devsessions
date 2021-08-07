@@ -28,7 +28,7 @@ const Home = () => {
           <div class="col d-flex justify-content-center flex-column p-4">
             <h1>Locked At Home?</h1>
             <h5 class="text-secondary mt-2">Learn your favorite skills virtually with digital Sessions that comes straight to your home. Attend a workshop of your choice now!</h5>
-            <h1 style={{ width: '10rem' }}><Link to="/workshops"><button type="button" class="btn btn-outline-primary  mt-3 font-weight-bold" >Check out All!</button></Link></h1>
+            <h1 style={{ width: '10rem' }}><Link to="/sessions/all"><button type="button" class="btn btn-outline-primary  mt-3 font-weight-bold" >Check out All!</button></Link></h1>
           </div>
         </div>
         <div class="row ">
