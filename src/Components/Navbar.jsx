@@ -15,22 +15,20 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import logo from '../Assests/logo.svg';
-<<<<<<< HEAD
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-=======
-import { Link } from "react-router-dom";
->>>>>>> b7389122177ba43d7304e1f94b6f2fbee39f4e4c
+import { useSelector, useDispatch } from 'react-redux';
+import { authsliceactions } from '../redux/auth';
+import { useHistory } from 'react-router';
 //update authentication with redux
 //logout button auth state change
 export default function Navbar() {
   const auth = useSelector((state) => state.auth);
-
+  const dispatch = useDispatch();
   const classes = useStyles();
+  const history=useHistory()
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const isMenuOpen = Boolean(anchorEl);
-  const [auth, setauth] = useState(false);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const handleProfileMenuOpen = (event) => {
@@ -48,7 +46,13 @@ export default function Navbar() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  const logouthandler = () => {
+    dispatch(authsliceactions.logoutparticipant());
+    history.push('/');
+  };
+
   const menuId = 'primary-search-account-menu';
+
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
@@ -59,22 +63,28 @@ export default function Navbar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-<<<<<<< HEAD
-      <MenuItem onClick={handleMenuClose}>
-        <Link to='/registered' style={{ textDecoration: 'none' }}>
-          Registerd Sessions
-        </Link>
-      </MenuItem>
-      <MenuItem onClick={handleMenuClose}>
-        <Link to='/registered' style={{ textDecoration: 'none' }}>
-          Registerd Sessions
-        </Link>
-      </MenuItem>
-=======
-      <MenuItem onClick={handleMenuClose}><Link to="/profile" style={{ color: "#004aad", textDecoration: 'none' }}>Profile</Link></MenuItem>
-      <MenuItem onClick={handleMenuClose}><Link to="/" style={{ color: "#004aad", textDecoration: 'none' }}>Logout</Link></MenuItem>
-
->>>>>>> b7389122177ba43d7304e1f94b6f2fbee39f4e4c
+      {auth.islogin && (
+        <>
+          {' '}
+          <MenuItem onClick={handleMenuClose}>
+            <Link
+              to='/profile'
+              style={{ color: '#004aad', textDecoration: 'none' }}
+            >
+              Profile
+            </Link>
+          </MenuItem>
+          <MenuItem onClick={handleMenuClose}>
+            <Link
+              to='/'
+              style={{ color: '#004aad', textDecoration: 'none' }}
+              onClick={logouthandler}
+            >
+              Logout
+            </Link>
+          </MenuItem>
+        </>
+      )}
     </Menu>
   );
 
@@ -177,7 +187,7 @@ export default function Navbar() {
                 UPCOMING SESSIONS!
               </Link>
             </Button>
-            {auth.islogin  ? (
+            {auth.islogin ? (
               <IconButton
                 edge='end'
                 aria-label='account of current user'

@@ -11,11 +11,12 @@ import { sendworkshopdata } from '../redux/workshop-actions';
 import { useHistory } from 'react-router';
 
 const WorkshopForm = () => {
+  const history=useHistory()
+ 
   const dispatch = useDispatch();
   const [date, setdate] = useState('');
   //   const workshopdata=useSelector(state=>state.workshops);
-const history=useHistory()
-  const [formstate, inputchangehandelr] = useForm(
+ const [formstate, inputchangehandelr] = useForm(
     {
       name: {
         value: '',

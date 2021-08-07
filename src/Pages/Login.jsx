@@ -5,11 +5,12 @@ import styles from './Login.module.css';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import { authsliceactions } from '../redux/auth';
-import {useDispatch} from 'react-redux'
-import { useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { useState, useRef } from 'react';
 import { useHistory } from 'react-router';
 
 const LoginComp = () => {
+  const [error, seterror] = useState(false);
   const dispatch = useDispatch();
   const emailref = useRef();
   const history = useHistory();
@@ -36,6 +37,10 @@ const LoginComp = () => {
           <div className='col mt-n-3'>
             <div className='row'>
               <h2 className={styles.bord_bottom}>Login</h2>
+            </div>
+
+            <div className={styles.error}>
+              {error && 'You must enter all fields'}
             </div>
             <div className={`${styles.entry} row`}>
               <div className='col-sm-1'>
