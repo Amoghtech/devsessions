@@ -15,6 +15,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
+import PersonIcon from '@material-ui/icons/Person';
 
 const useStyles = makeStyles({
   root: {
@@ -59,6 +60,7 @@ const LoginComp = () => {
   const emailref = useRef();
   const history = useHistory();
   const passwordref = useRef();
+  const usernameref = useRef();
   const submithandler = () => {
     if (
       !emailref.current.value.includes('@') ||
@@ -82,8 +84,8 @@ const LoginComp = () => {
     
       <div className='container'>
         <div class='row p-2 mt-5'>
-          <div class='col d-flex align-items-center '>
-            <img src={login} alt='' className=' ' style={{ width: '85%' }} />
+          <div class='col mt-5'>
+            <img src={login} alt='' className=' ' style={{ width: '85%',height:"300px" }} />
           </div>
           <div className='col mt-n-3'>
             <div className='row'>
@@ -127,7 +129,51 @@ const LoginComp = () => {
               </div>
             {/* signup component */}
             <TabPanel value={value} index={1}>
-              Item Two
+              <div className={`${styles.entry} row`}>
+                <div className='col-sm-1'>
+                  <PersonIcon />
+                </div>
+                <div className='col-sm-11'>
+                  <input
+                    ref={usernameref}
+                    type='text'
+                    placeholder='Enter your name'
+                  />
+                </div>
+              </div>
+              <div className={`${styles.entry} row`}>
+                <div className='col-sm-1'>
+                  <MailOutlineIcon />
+                </div>
+                <div className='col-sm-11'>
+                  <input
+                    ref={emailref}
+                    type='email'
+                    placeholder='Enter email id'
+                  />
+                </div>
+              </div>
+              <div className={`${styles.entry} row`}>
+                <div className='col-sm-1'>
+                  <VpnKeyIcon />
+                </div>
+                <div className='col-sm-11'>
+                  <input
+                    type='password'
+                    ref={passwordref}
+                    placeholder='Enter password'
+                  />
+                </div>
+              </div>
+              <div className={`${styles.entry}  row`}>
+                <button
+                  onClick={submithandler}
+                  type='button'
+                  class='btn btn-primary'
+                >
+                  Sign Up
+                </button>
+              </div>
             </TabPanel>
 
             {/* <div className={styles.bot_text}>
