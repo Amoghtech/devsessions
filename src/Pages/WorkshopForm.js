@@ -117,7 +117,6 @@ const WorkshopForm = () => {
           <img src={formsvg} style={{ height: "300px" }} />
         </div>
       </div>
-      <img src={formsvg} />
     </div>
   );
 };
