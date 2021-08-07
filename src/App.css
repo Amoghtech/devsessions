@@ -2,8 +2,8 @@
 .dark-primary-color    { background: #0288D1; }
 .default-primary-color { background: #03A9F4; }
 .light-primary-color   { background: #B3E5FC; }
-.text-primary-color    { color: #FFFFFF; }
 .accent-color          { background: #00BCD4; }
-.primary-text-color    { color: #212121; }
+.text-primary-color    { color: #FFFFFF; }
+.primary-text-color    { color: #0288D1; }
 .secondary-text-color  { color: #757575; }
 .divider-color         { border-color: #BDBDBD; }
