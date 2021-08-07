@@ -3,7 +3,6 @@ import { alpha, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -14,6 +13,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import logo from '../Assests/logo.svg';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -163,7 +163,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div className={classes.grow} >
-      <AppBar position="static" style={{background: '#2196f3'}}>
+      <AppBar position="static" style={{ background: 'white', color: "black" }}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -173,15 +173,13 @@ export default function PrimarySearchAppBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-            Material-UI
-          </Typography>
+          <img src={logo} alt="" style={{ height: "4rem" }} />
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
             <InputBase
-              placeholder="Search…"
+              placeholder="Search Sessions…"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
