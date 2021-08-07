@@ -5,34 +5,33 @@ import Layout from './Components/Layout';
 import Workshops from './Pages/Workshops';
 import LoginComp from './Pages/LoginComp';
 import Registered from './Pages/Registered';
-import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import React from 'react';
+import { useEffect } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 export default function App() {
-  let routes =
-    (<Switch>
-      <Route path="/registered">
-        <Registered/>
+  let routes = (
+    <Switch>
+      <Route path='/registered'>
+        <Registered />
       </Route>
-      <Route path="/workshops">
-        <Workshops/>
+      <Route path='/workshops/all'>
+        <Workshops />
       </Route>
-      <Route exact path="/login" >
-        <LoginComp/>
+      <Route path='/workshops/:workshopId'>
+        <WorkshopItem />
       </Route>
-      <Route exact path="/" >
-        <Home/>
+      <Route exact path='/login'>
+        <LoginComp />
       </Route>
-    </Switch>);
+      <Route exact path='/'>
+        <Home />
+      </Route>
+    </Switch>
+  );
   return (
     <Router>
-      <Layout>
-        {routes}
-      </Layout>
+      <Layout>{routes}</Layout>
     </Router>
   );
 }
