@@ -6,7 +6,7 @@ import EventIcon from '@material-ui/icons/Event';
 const WorkshopCard = () => {
     return (
         <div>
-            <div className="container shadow p-4 my-3" >
+            <div className="container-fluid shadow p-4 my-3" >
                 <div className="row ">
                     <div className="col-md-2 col-xs-2 d-flex justify-content-center  " >
                         <img className={styles.img_size} src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/challenge_thumbnails/001/562/639/datas/medium.png" alt="not found" />

@@ -6,6 +6,7 @@ import IconButton from '@material-ui/core/IconButton';
 import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
+import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
@@ -188,11 +189,8 @@ export default function Navbar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
+            <Button color="inherit" ><Link to="/new-session" style={{ color: "#004aad", textDecoration: 'none', fontWeight: 'bold' }} >HOST A SESSION!</Link></Button>
+            <Button color="inherit"><Link to="/sessions/all" style={{ color: "#004aad", textDecoration: 'none', fontWeight: 'bold' }}>UPCOMING SESSIONS!</Link></Button>
             <IconButton
               edge="end"
               aria-label="account of current user"
