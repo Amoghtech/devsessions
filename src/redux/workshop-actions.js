@@ -67,7 +67,7 @@ export const fetchworkshop = () => {
       return { items: transformed, total: t };
     };
     try {
-      const data = await fetchdata();
+      const data =  fetchdata();
       dispatch(
         workshopsliceactions.replaceworkshop({
           items: data.items,

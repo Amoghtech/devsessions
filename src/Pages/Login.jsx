@@ -5,8 +5,16 @@ const LoginComp = () => {
         <div className="form_div">
             <h2>Login</h2>
             <form action="" onSubmit={submithandler}>
-                <Input
-                />
+            <Input
+            id="name"
+            type="text"
+            label="Name"
+            element="input"
+            validators={[VALIDATOR_REQUIRE()]}
+            errorText="Please enter a name"
+            onInput={inputchangehandelr}
+          />
+          
             </form>
         </div>
     );
