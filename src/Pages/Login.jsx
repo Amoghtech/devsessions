@@ -1,7 +1,7 @@
 import React from 'react';
-import {Link} from "react-router-dom"
-import login from "../Assests/login.svg"
-import styles from "./Login.module.css"
+import { Link } from "react-router-dom";
+import login from "../Assests/login.svg";
+import styles from "./Login.module.css";
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 const LoginComp = () => {
@@ -10,7 +10,7 @@ const LoginComp = () => {
             <div className="container">
                 <div class="row p-2 mt-5">
                     <div class="col d-flex align-items-center ">
-                        <img src={login} alt="" className=" " style={{ width: "85%"}} />
+                        <img src={login} alt="" className=" " style={{ width: "85%" }} />
                     </div>
                     <div className="col mt-n-3">
                         <div className="row">
@@ -32,7 +32,7 @@ const LoginComp = () => {
                                 <input type="password" placeholder="Enter password" />
                             </div>
                         </div>
-                        
+
                         <div className={`${styles.entry}  row`}>
                             <button type="button" class="btn btn-primary">Login</button>
                         </div>

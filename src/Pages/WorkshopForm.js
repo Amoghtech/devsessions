@@ -4,7 +4,16 @@ import { VALIDATOR_REQUIRE } from '../utils/validators';
 import'./WorkshopForm.css';
 import formsvg from '../Assests/hostimg.svg';
 import { useForm } from '../hooks/form-hook';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { workshopsliceactions } from '../redux/workshops';
+import { sendworkshopdata } from '../redux/workshop-actions';
+let inital = false;
 const WorkshopForm = () => {
+  const dispatch = useDispatch();
+  const [date, setdate] = useState('');
+  //   const workshopdata=useSelector(state=>state.workshops);
+
   const [formstate, inputchangehandelr] = useForm(
     {
       name: {
@@ -28,10 +37,29 @@ const WorkshopForm = () => {
   );
   const submithandler = (e) => {
     e.preventDefault();
+    dispatch(
+      workshopsliceactions.addworkshop({
+        name: formstate.inputs.name,
+        nameorg: formstate.inputs.nameorg,
+        shortdesc: formstate.inputs.shortdesc,
+        longdesc: formstate.inputs.longdesc,
+        date: date,
+      })
+    );
+
+    dispatch(
+      sendworkshopdata({
+        name: formstate.inputs.name,
+        nameorg: formstate.inputs.nameorg,
+        shortdesc: formstate.inputs.shortdesc,
+        longdesc: formstate.inputs.longdesc,
+        date: date,
+      })
+    );
   };
   //   const [value, onChange] = useState(new Date());
   const onChangehandler = (e) => {
-    console.log(e.target.value);
+    setdate(e.target.value);
   };
   return (
     <div className='container p-2 '>
