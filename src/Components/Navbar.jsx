@@ -15,8 +15,12 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import logo from '../Assests/logo.svg';
+<<<<<<< HEAD
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+=======
+import { Link } from "react-router-dom";
+>>>>>>> b7389122177ba43d7304e1f94b6f2fbee39f4e4c
 //update authentication with redux
 //logout button auth state change
 export default function Navbar() {
@@ -26,7 +30,7 @@ export default function Navbar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const isMenuOpen = Boolean(anchorEl);
-  const [auth, setauth] = useState(true);
+  const [auth, setauth] = useState(false);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const handleProfileMenuOpen = (event) => {
@@ -55,6 +59,7 @@ export default function Navbar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
+<<<<<<< HEAD
       <MenuItem onClick={handleMenuClose}>
         <Link to='/registered' style={{ textDecoration: 'none' }}>
           Registerd Sessions
@@ -65,6 +70,11 @@ export default function Navbar() {
           Registerd Sessions
         </Link>
       </MenuItem>
+=======
+      <MenuItem onClick={handleMenuClose}><Link to="/profile" style={{ color: "#004aad", textDecoration: 'none' }}>Profile</Link></MenuItem>
+      <MenuItem onClick={handleMenuClose}><Link to="/" style={{ color: "#004aad", textDecoration: 'none' }}>Logout</Link></MenuItem>
+
+>>>>>>> b7389122177ba43d7304e1f94b6f2fbee39f4e4c
     </Menu>
   );
 

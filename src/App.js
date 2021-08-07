@@ -4,7 +4,6 @@ import Home from './Pages/Home';
 import Layout from './Components/Layout';
 import Workshops from './Pages/Workshops';
 import LoginComp from './Pages/Login';
-import Registered from './Pages/Registered';
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import WorkshopItem from './Components/WorkshopItem';
@@ -13,6 +12,7 @@ import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import Userprofile from './Pages/Userprofile';
 export default function App() {
+<<<<<<< HEAD
   const auth = useSelector((state) => state.auth);
 
   let routes;
@@ -61,6 +61,30 @@ export default function App() {
     );
   }
 
+=======
+  let routes = (
+    <Switch>
+      <Route exact path='/profile'>
+        <Userprofile/>
+      </Route>
+      <Route exact path='/sessions/all'>
+        <Workshops />
+      </Route>
+      <Route exact path='/sessions/:sessionId'>
+        <WorkshopItem />
+      </Route>
+      <Route exact path='/login'>
+        <LoginComp />
+      </Route>
+      <Route path="/new-session">
+        <WorkshopForm/>
+      </Route>
+      <Route exact path='/'>
+        <Home />
+      </Route>
+    </Switch>
+  );
+>>>>>>> b7389122177ba43d7304e1f94b6f2fbee39f4e4c
   return (
     <Router>
       <Layout>{routes}</Layout>
