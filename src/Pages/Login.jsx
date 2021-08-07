@@ -4,7 +4,12 @@ import login from "../Assests/login.svg";
 import styles from "./Login.module.css";
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
+import { useDispatch } from 'react-redux';
+import {authsliceactions} from '../redux/auth'
 const LoginComp = () => {
+const dispatch=useDispatch()
+
+
     return (
         <div>
             <div className="container">
