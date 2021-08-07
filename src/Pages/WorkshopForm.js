@@ -1,7 +1,7 @@
 import Input from '../Components/Input';
 import Button from '../Components/Button';
 import { VALIDATOR_REQUIRE } from '../utils/validators';
-import './WorkshopForm.css';
+import'./WorkshopForm.css';
 import formsvg from '../Assests/hostimg.svg';
 import { useForm } from '../hooks/form-hook';
 const WorkshopForm = () => {
@@ -34,7 +34,7 @@ const WorkshopForm = () => {
     console.log(e.target.value);
   };
   return (
-    <div className='container-md p-2 '>
+    <div className='container p-2 '>
       <div class="row">
         <div className=' col new__session'>
           <h2>HOST A SESSION!</h2>
