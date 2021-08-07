@@ -64,10 +64,10 @@ const LoginComp = () => {
       !emailref.current.value.includes('@') ||
       !passwordref.current.value.length > 3
     ) {
-      // seterror(true);
+      seterror(true);
       return;
     }
-    // seterror(false);
+    seterror(false);
     dispatch(authsliceactions.loginparticipant());
     history.push('/');
   };
