@@ -8,6 +8,7 @@ import Registered from './Pages/Registered';
 import React from 'react';
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import WorkshopItem from "./Pages/WorkshopItem"
 
 export default function App() {
   let routes = (
