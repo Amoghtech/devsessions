@@ -8,12 +8,13 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { workshopsliceactions } from '../redux/workshops';
 import { sendworkshopdata } from '../redux/workshop-actions';
-let inital = false;
+import { useHistory } from 'react-router';
+
 const WorkshopForm = () => {
   const dispatch = useDispatch();
   const [date, setdate] = useState('');
   //   const workshopdata=useSelector(state=>state.workshops);
-
+const history=useHistory()
   const [formstate, inputchangehandelr] = useForm(
     {
       name: {
@@ -56,6 +57,7 @@ const WorkshopForm = () => {
         date: date,
       })
     );
+    history.push('/')
   };
   //   const [value, onChange] = useState(new Date());
   const onChangehandler = (e) => {

@@ -15,11 +15,13 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import logo from '../Assests/logo.svg';
-import { Link } from "react-router-dom";
-
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 //update authentication with redux
 //logout button auth state change
 export default function Navbar() {
+  const auth = useSelector((state) => state.auth);
+
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -53,9 +55,16 @@ export default function Navbar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-
-      <MenuItem onClick={handleMenuClose}><Link to="/registered" style={{ textDecoration: 'none' }}>Registerd Sessions</Link></MenuItem>
-      <MenuItem onClick={handleMenuClose}><Link to="/registered" style={{ textDecoration: 'none' }}>Registerd Sessions</Link></MenuItem>
+      <MenuItem onClick={handleMenuClose}>
+        <Link to='/registered' style={{ textDecoration: 'none' }}>
+          Registerd Sessions
+        </Link>
+      </MenuItem>
+      <MenuItem onClick={handleMenuClose}>
+        <Link to='/registered' style={{ textDecoration: 'none' }}>
+          Registerd Sessions
+        </Link>
+      </MenuItem>
     </Menu>
   );
 
@@ -71,54 +80,58 @@ export default function Navbar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
+        <IconButton aria-label='show 4 new mails' color='inherit'>
+          <Badge badgeContent={4} color='secondary'>
             <MailIcon />
           </Badge>
         </IconButton>
         <p>Messages</p>
       </MenuItem>
       <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
+        <IconButton aria-label='show 11 new notifications' color='inherit'>
+          <Badge badgeContent={11} color='secondary'>
             <NotificationsIcon />
           </Badge>
         </IconButton>
         <p>Notifications</p>
       </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
+      {auth.islogin && (
+        <MenuItem onClick={handleProfileMenuOpen}>
+          <IconButton
+            aria-label='account of current user'
+            aria-controls='primary-search-account-menu'
+            aria-haspopup='true'
+            color='inherit'
+          >
+            <AccountCircle />
+          </IconButton>
+          <p>Profile</p>
+        </MenuItem>
+      )}
     </Menu>
   );
 
   return (
-    <div className={classes.grow} >
-      <AppBar position="static" style={{ background: 'white', color: "black" }}>
+    <div className={classes.grow}>
+      <AppBar position='static' style={{ background: 'white', color: 'black' }}>
         <Toolbar>
           <IconButton
-            edge="start"
+            edge='start'
             className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
+            color='inherit'
+            aria-label='open drawer'
           >
             <MenuIcon />
           </IconButton>
-          <Link to="/"><img src={logo} alt="" style={{ height: "4rem" }} /></Link>
+          <Link to='/'>
+            <img src={logo} alt='' style={{ height: '4rem' }} />
+          </Link>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
             <InputBase
-              placeholder="Search Sessions…"
+              placeholder='Search Sessions…'
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
@@ -128,29 +141,65 @@ export default function Navbar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <Button color="inherit" ><Link to="/new-session" style={{ color: "#004aad", textDecoration: 'none', fontWeight: 'bold' }} >HOST A SESSION!</Link></Button>
-            <Button color="inherit"><Link to="/sessions/all" style={{ color: "#004aad", textDecoration: 'none', fontWeight: 'bold' }}>UPCOMING SESSIONS!</Link></Button>
-            {auth == true ?
+            {auth.islogin && (
+              <Button color='inherit'>
+                <Link
+                  to='/new-session'
+                  style={{
+                    color: '#004aad',
+                    textDecoration: 'none',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  HOST A SESSION!
+                </Link>
+              </Button>
+            )}{' '}
+            <Button color='inherit'>
+              <Link
+                to='/sessions/all'
+                style={{
+                  color: '#004aad',
+                  textDecoration: 'none',
+                  fontWeight: 'bold',
+                }}
+              >
+                UPCOMING SESSIONS!
+              </Link>
+            </Button>
+            {auth.islogin  ? (
               <IconButton
-                edge="end"
-                aria-label="account of current user"
+                edge='end'
+                aria-label='account of current user'
                 aria-controls={menuId}
-                aria-haspopup="true"
+                aria-haspopup='true'
                 onClick={handleProfileMenuOpen}
-                color="inherit"
+                color='inherit'
               >
                 <AccountCircle />
               </IconButton>
-              :
-              <Button color="inherit"><Link to="/login" style={{ color: "#004aad", textDecoration: 'none', fontWeight: 'bold' }}>Login</Link></Button>}
+            ) : (
+              <Button color='inherit'>
+                <Link
+                  to='/login'
+                  style={{
+                    color: '#004aad',
+                    textDecoration: 'none',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  Login
+                </Link>
+              </Button>
+            )}
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
-              aria-label="show more"
+              aria-label='show more'
               aria-controls={mobileMenuId}
-              aria-haspopup="true"
+              aria-haspopup='true'
               onClick={handleMobileMenuOpen}
-              color="inherit"
+              color='inherit'
             >
               <MoreIcon />
             </IconButton>
