@@ -3,14 +3,19 @@ import './App.css';
 import Home from './Pages/Home';
 import Layout from './Components/Layout';
 import Workshops from './Pages/Workshops';
-import LoginComp from './Pages/LoginComp';
+import LoginComp from './Pages/Login';
 import Registered from './Pages/Registered';
 import React from 'react';
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import WorkshopItem from './Components/WorkshopItem';
 import WorkshopForm from './Pages/WorkshopForm'
+import { useSelector } from 'react-redux';
 export default function App() {
+
+
+
+
   let routes = (
     <Switch>
       <Route path='/registered'>
