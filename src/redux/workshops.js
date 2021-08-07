@@ -2,11 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialstate = {
   items: [],
-  total:0,
-  iserror: false,
+  total: 0,
 };
 
-const authslice = createSlice({
+const workshopslice = createSlice({
   name: 'workshop',
   initialState: initialstate,
   reducers: {
@@ -22,18 +21,14 @@ const authslice = createSlice({
         return;
       }
       state.items = state.items.filter((item) => item.creatorid !== userid);
-    state.total--;
+      state.total--;
     },
-    replaceworkshop(state,action){
-        state.items=action.payload.items;
-        state.total=action.payload.total;
-
-    },
-    toggleerror(state) {
-      state.iserror = !state.iserror;
+    replaceworkshop(state, action) {
+      state.items = action.payload.items;
+      state.total = action.payload.total;
     },
   },
 });
 
-export const autrhsliceactions = authslice.actions;
-export default authslice.reducer;
+export const workshopsliceactions = workshopslice.actions;
+export default workshopslice.reducer;

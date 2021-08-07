@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialstate = {
   islogin: false,
   isparticipant:false,
-iserror:false
+
 };
 
 const authslice = createSlice({
@@ -18,12 +18,9 @@ const authslice = createSlice({
     },
     participant(state){
         state.isparticipant=true;
-    },
-    toggleerror(state){
-state.iserror=!state.iserror
     }
   },
 });
 
-export const autrhsliceactions = authslice.actions;
+export const authsliceactions = authslice.actions;
 export default authslice.reducer;
