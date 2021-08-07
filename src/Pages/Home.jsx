@@ -4,11 +4,10 @@ import bg_img from "../img/home_bg.jpg"
 const Home = () => {
   return (
     <div>
-      <div className="home__jumbo">
-        <div className="jumbo_img">
-          
+      <div className="frame">
+        <div className="fade"></div>
+          <img src={bg_img} alt=""/>
         </div>
-      </div>
     </div>
   )
 }

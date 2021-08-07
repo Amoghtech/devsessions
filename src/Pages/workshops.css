@@ -1,0 +1,21 @@
+.part_span{
+    font-weight: 750;
+}
+
+.part_span-2{
+    color:#5a757f;
+    font-weight: 500;
+}
+.part_icon{
+    margin-right: 10px;
+}
+.desc{
+    font-size: 14px;
+}
+.cal{
+    margin-top: 40px;
+}
+.btn:hover {
+  color: white !important;
+  text-decoration: none !important;
+}

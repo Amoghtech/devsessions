@@ -1,12 +1,18 @@
-.home__jumbo{
-    background-color: aqua;
-    height: 70vh;
-    width: 100vw;
+.frame {
+    width: 315px;
+    height: 165px;
+    margin: 20px;
+    position: relative;
 }
-.jumbo_img{
-    background-image: url("../img/home_bg.jpg");
-    background-repeat: no-repeat;
-    background-size:auto;
-    width: 100%;
+
+.fade {
     height: 100%;
+    width: 100%;
+    position:absolute;
+    background: -webkit-linear-gradient(left, 
+                rgba(0,0,0,0.65) 0%, 
+                rgba(0,0,0,0) 20%,
+                rgba(0,0,0,0) 80%,
+                rgba(0,0,0,0.65) 100%
+    );
 }
