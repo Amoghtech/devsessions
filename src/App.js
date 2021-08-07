@@ -18,9 +18,6 @@ export default function App() {
   if (auth.islogin) {
     routes = (
       <Switch>
-        {/* <Route exact path='/registered'>
-          <Registered />
-        </Route> */}
         <Route exact path='/profile'>
           <Userprofile />
         </Route>
@@ -59,7 +56,6 @@ export default function App() {
       </Switch>
     );
   }
-
   return (
     <Router>
       <Layout>{routes}</Layout>

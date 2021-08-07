@@ -8,7 +8,51 @@ import { authsliceactions } from '../redux/auth';
 import { useDispatch } from 'react-redux';
 import { useState, useRef } from 'react';
 import { useHistory } from 'react-router';
+import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import Paper from '@material-ui/core/Paper';
 
+const useStyles = makeStyles({
+  root: {
+    flexGrow: 1,
+  },
+});
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`scrollable-auto-tabpanel-${index}`}
+      aria-labelledby={`scrollable-auto-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box p={3}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.any.isRequired,
+  value: PropTypes.any.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `scrollable-auto-tab-${index}`,
+    'aria-controls': `scrollable-auto-tabpanel-${index}`,
+  };
+}
 const LoginComp = () => {
   const [error, seterror] = useState(false);
   const dispatch = useDispatch();
@@ -20,15 +64,22 @@ const LoginComp = () => {
       !emailref.current.value.includes('@') ||
       !passwordref.current.value.length > 3
     ) {
-      seterror(true);
+      // seterror(true);
       return;
     }
-    seterror(false);
+    // seterror(false);
     dispatch(authsliceactions.loginparticipant());
     history.push('/');
   };
+  // navss
+  const classes = useStyles();
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
   return (
-    <div>
+    
       <div className='container'>
         <div class='row p-2 mt-5'>
           <div class='col d-flex align-items-center '>
@@ -53,29 +104,32 @@ const LoginComp = () => {
                   placeholder='Enter email id'
                 />
               </div>
-            </div>
-            <div className={`${styles.entry} row`}>
-              <div className='col-sm-1'>
-                <VpnKeyIcon />
+              <div className={`${styles.entry} row`}>
+                <div className='col-sm-1'>
+                  <VpnKeyIcon />
+                </div>
+                <div className='col-sm-11'>
+                  <input
+                    type='password'
+                    ref={passwordref}
+                    placeholder='Enter password'
+                  />
+                </div>
               </div>
-              <div className='col-sm-11'>
-                <input
-                  type='password'
-                  ref={passwordref}
-                  placeholder='Enter password'
-                />
+              <div className={`${styles.entry}  row`}>
+                <button
+                  onClick={submithandler}
+                  type='button'
+                  class='btn btn-primary'
+                >
+                  Login
+                </button>
               </div>
-            </div>
+            {/* signup component */}
+            <TabPanel value={value} index={1}>
+              Item Two
+            </TabPanel>
 
-            <div className={`${styles.entry}  row`}>
-              <button
-                onClick={submithandler}
-                type='button'
-                class='btn btn-primary'
-              >
-                Login
-              </button>
-            </div>
             {/* <div className={styles.bot_text}>
                             <span className="text ">DON'T HAVE AN ACCOUNT?</span> <span><Link to="/register"> Sign Up</Link></span>
                         </div> */}
