@@ -3,7 +3,7 @@ import './App.css';
 import Home from './Pages/Home';
 import Layout from './Components/Layout';
 import Workshops from './Pages/Workshops';
-import LoginComp from './Pages/LoginComp';
+import LoginComp from './Pages/Login';
 import Registered from './Pages/Registered';
 import React from "react";
 import {
