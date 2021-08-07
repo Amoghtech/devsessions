@@ -19,4 +19,4 @@ state.notification=null;
 });
 
 export const uisliceactions = slice.actions;
-export default slice;
+export default slice.reducer;

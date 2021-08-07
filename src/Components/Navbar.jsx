@@ -15,13 +15,17 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import logo from '../Assests/logo.svg';
-import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux';
+import { authsliceactions } from '../redux/auth';
+import { useHistory } from 'react-router';
 //update authentication with redux
 //logout button auth state change
 export default function Navbar() {
   const auth = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   const classes = useStyles();
+  const history=useHistory()
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const isMenuOpen = Boolean(anchorEl);
@@ -42,7 +46,13 @@ export default function Navbar() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  const logouthandler = () => {
+    dispatch(authsliceactions.logoutparticipant());
+    history.push('/');
+  };
+
   const menuId = 'primary-search-account-menu';
+
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
@@ -53,9 +63,28 @@ export default function Navbar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}><Link to="/profile" style={{ color: "#004aad", textDecoration: 'none' }}>Profile</Link></MenuItem>
-      <MenuItem onClick={handleMenuClose}><Link to="/" style={{ color: "#004aad", textDecoration: 'none' }}>Logout</Link></MenuItem>
-
+      {auth.islogin && (
+        <>
+          {' '}
+          <MenuItem onClick={handleMenuClose}>
+            <Link
+              to='/profile'
+              style={{ color: '#004aad', textDecoration: 'none' }}
+            >
+              Profile
+            </Link>
+          </MenuItem>
+          <MenuItem onClick={handleMenuClose}>
+            <Link
+              to='/'
+              style={{ color: '#004aad', textDecoration: 'none' }}
+              onClick={logouthandler}
+            >
+              Logout
+            </Link>
+          </MenuItem>
+        </>
+      )}
     </Menu>
   );
 

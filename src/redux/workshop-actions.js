@@ -49,6 +49,12 @@ export const sendworkshopdata = (workshopdata) => {
 export const fetchworkshop = () => {
   return async (dispatch) => {
     const fetchdata = async () => {
+      dispatch(
+        uisliceactions.setnotification({
+          status: 'SENDING',
+          message: 'SENDING DATA',
+        })
+      );
       const res = await fetch(
         'https://robohacks-e41e8-default-rtdb.firebaseio.com/workshops.json'
       );
@@ -71,6 +77,12 @@ export const fetchworkshop = () => {
     try {
       const data = await fetchdata();
       console.log(data);
+      dispatch(
+        uisliceactions.setnotification({
+          status: 'DONE',
+          message: 'SENDED',
+        })
+      );
       dispatch(
         workshopsliceactions.replaceworkshop({
           items: data.items,

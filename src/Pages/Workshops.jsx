@@ -1,14 +1,16 @@
 import React from 'react';
 import WorkshopCard from '../Components/Workshopcard';
 import { fetchworkshop } from '../redux/workshop-actions';
-import { useSelector,useDispatch } from 'react-redux';
-import {useEffect} from 'react'
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import Loading from '../Components/Loading';
 const Workshops = () => {
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
   const workshop = useSelector((state) => state.workshops);
+  const ui = useSelector((state) => state.ui);
 
   useEffect(() => {
-   dispatch(fetchworkshop());
+    dispatch(fetchworkshop());
   }, [fetchworkshop]);
 
   return (
@@ -20,7 +22,10 @@ const Workshops = () => {
           </h2>
         </div>
       </div>
-      <div class='row mt-3'>
+      <div class='row mt-3 d-flex align-item-center justify-content-center'>
+        {ui.notification !== null && ui.notification.status === 'SENDING' && (
+          <Loading />
+        )}
         {workshop.items.map((w) => (
           <WorkshopCard
             name={w.name.value}
