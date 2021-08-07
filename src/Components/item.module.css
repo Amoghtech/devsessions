@@ -38,10 +38,15 @@ h2{
     width: 100%;
     height: 100%;
 }
-
+.para{
+    letter-spacing: 1px;
+    line-height: 23px;
+    font-size: 1.1em;
+}
 .left_col{
     background-color: #f5f7f7;
     padding: 10px;
+    
 }
 .right_col{
     /* width: 100%;
@@ -49,5 +54,7 @@ h2{
 }
 
 .contentText{
-    text-align: justify;
+    /* text-align: justify; */
+    line-height: 28px;
+    font-size: 19px;
 }

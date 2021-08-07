@@ -47,7 +47,7 @@ const WorkshopItem = () => {
           <div className={`col-md-8 ${styles.left_col}`}>
             <div className="row p-3">
               <h2>Boroows</h2>
-              <p>Build applications, websites, browser extensions, libraries, modules, tools or learning materials that bring web3 or P2P to the web we have today.</p>
+              <p className={styles.para}>Build applications, websites, browser extensions, libraries, modules, tools or learning materials that bring web3 or P2P to the web we have today.</p>
               <button type="button" class="btn btn-primary ms-2" style={{width:"150px"}}>Register</button>
             </div>
           </div>
