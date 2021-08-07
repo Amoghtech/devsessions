@@ -1,0 +1,25 @@
+.bord_bottom{
+    border-bottom: 1px solid gray;
+    border-width: 0.001em;
+    padding: 3px;
+    margin-bottom: 50px;
+
+}
+
+.entry{
+    margin-bottom:40px;
+    margin-top: 10px;
+    width: 100%;
+}
+input{
+    border-bottom: solid 2px #f3f3f3 !important;
+    padding-bottom: 1.2rem;
+    outline: none;
+    border: none;
+    width: 100%;
+}
+
+.bot_text{
+    margin-top: -20px;
+    font-size: 11px;
+}
