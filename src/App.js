@@ -4,7 +4,6 @@ import Home from './Pages/Home';
 import Layout from './Components/Layout';
 import Workshops from './Pages/Workshops';
 import LoginComp from './Pages/Login';
-import Registered from './Pages/Registered';
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import WorkshopItem from './Components/WorkshopItem';
@@ -15,9 +14,6 @@ import Userprofile from './Pages/Userprofile';
 export default function App() {
   let routes = (
     <Switch>
-      <Route exact path='/registered'>
-        <Registered />
-      </Route>
       <Route exact path='/profile'>
         <Userprofile/>
       </Route>
