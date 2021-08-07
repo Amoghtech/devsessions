@@ -1,5 +1,8 @@
 import { uisliceactions } from './uislice';
 import { workshopsliceactions } from './workshops';
+import {useDispatch} from 'react-redux'
+
+
 export const sendworkshopdata = (workshopdata) => {
   return async (dispatch) => {
     const senddata = async () => {
@@ -44,7 +47,7 @@ export const sendworkshopdata = (workshopdata) => {
 };
 
 export const fetchworkshop = () => {
-  return (dispatch) => {
+  return async (dispatch) => {
     const fetchdata = async () => {
       const res = await fetch(
         'https://robohacks-e41e8-default-rtdb.firebaseio.com/workshops.json'
@@ -55,23 +58,22 @@ export const fetchworkshop = () => {
 
       const data = await res.json();
       const transformed = [];
-      let t = 0;
+
       for (let key in data) {
         transformed.push({
           id: key,
           ...data[key],
         });
-        t++;
       }
 
-      return { items: transformed, total: t };
+      return { items: transformed };
     };
     try {
-      const data =  fetchdata();
+      const data = await fetchdata();
+      console.log(data);
       dispatch(
         workshopsliceactions.replaceworkshop({
           items: data.items,
-          total: data.total,
         })
       );
     } catch (err) {
@@ -85,28 +87,31 @@ export const fetchworkshop = () => {
   };
 };
 
-export const fetchsingleworkshop = async (workshopid) => {
-  const fetchdata = async () => {
-    const res = await fetch(
-      `https://robohacks-e41e8-default-rtdb.firebaseio.com/workshops.json/${workshopid}.json`
-    );
-    if (!res.ok) {
-      throw new Error('Could not fetch data');
-    }
+// export const fetchsingleworkshop = async (workshopid) => {
+  
+//   const fetchdata = async () => {
+//     const res = await fetch(
+//       `https://robohacks-e41e8-default-rtdb.firebaseio.com/workshops.json/${workshopid}.json`
+//     );
+//     if (!res.ok) {
+//       throw new Error('Could not fetch data');
+//     }
 
-    const data = await res.json();
+//     const data = await res.json();
 
-    return { id: workshopid, ...data };
-  };
-  try {
-    const data = await fetchdata();
-    return data;
-  } catch (err) {
-    dispatch(
-      uisliceactions.setnotification({
-        status: 'ERROR',
-        message: 'Could fetch data',
-      })
-    );
-  }
-};
+//     return { id: workshopid, ...data };
+//   };
+//    fetchdata().then(data=>{
+
+//    }).catch(err=>{
+
+//     dispatch(
+//       uisliceactions.setnotification({
+//         status: 'ERROR',
+//         message: 'Could fetch data',
+//       })
+//     );
+//    })
+//     return data;
+//   }
+

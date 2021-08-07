@@ -1,0 +1,19 @@
+.new__session{
+    height:40rem;
+    width:50%;
+    /* background-color: red; */
+    margin:4rem 2rem;
+    
+}
+
+.container{
+    width:100vw;
+    display:flex;
+    align-items:center;
+    justify-content: space-around;
+}
+
+
+.data{
+    width:100%
+}

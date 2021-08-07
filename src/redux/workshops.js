@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialstate = {
   items: [],
-  total: 0,
+  
 };
 
 const workshopslice = createSlice({
@@ -10,8 +10,8 @@ const workshopslice = createSlice({
   initialState: initialstate,
   reducers: {
     addworkshop(state, action) {
-      state.items.push(action.payload);
-      state.total++;
+      state.items.unshift(action.payload);
+    
     },
     removeworkshop(state, action) {
       const userid = action.payload.userid;
@@ -21,11 +21,10 @@ const workshopslice = createSlice({
         return;
       }
       state.items = state.items.filter((item) => item.creatorid !== userid);
-      state.total--;
+    
     },
     replaceworkshop(state, action) {
       state.items = action.payload.items;
-      state.total = action.payload.total;
     },
   },
 });
