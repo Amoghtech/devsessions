@@ -47,7 +47,7 @@ const WorkshopCard = (props) => {
             <div class='mt-4 '>
               <button class='text-white border rounded py-2 px-4 dark-primary-color  '>
                 {' '}
-                <h6 class='m-0'>Register</h6>
+                <h6 class='m-0' onClick={props.onRegisterClick()}>Register</h6>
               </button>
             </div>
           </div>
