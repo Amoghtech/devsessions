@@ -126,13 +126,36 @@ const WorkshopItem = () => {
               </div>
             </div>
           </div>
-          <div className='container mt-5'>
+          <div className='container mt-3'>
             <div className='row'>
               <div className={`col-md-8 ${styles.contentText}`}>
-                {data.data.longdesc}
+                <div className="row">
+                  <div className={styles.longDesc}>{data.data.longdesc} </div>
+                </div>
+                  <div className="row mt-3">
+                    <h3 className="mb-4"><u>Topics to be covered </u></h3>
+                    
+                    <ul className="ms-3">
+                      <li>Understand Machine Learning and Python</li>
+                      <li>Knowledge on the Python language</li>
+                      <li>Understand the use of 'Python' in the industry</li>
+                      <li>Install Python and the packages useful for the course</li>
+                    </ul>
+                </div>
+                  <div className="row mt-3">
+                    <h3 className="mb-4"><u>Takeaways</u></h3>
+                    <h4>Introduction to Machine Learning</h4>
+                    <ol className="ms-3">
+                      <li>Certificate of Merit for all the workshop participants.</li>
+                      <li> At the end of this workshop, a small competition will be organized among the participating students and winners will be awarded with a <b>'Certificate of Excellence'</b>.</li>
+                      <li>About the advantages of the TestProject Python OpenSDK and the TestProject Agent in setting up and maintaining reporting and driver configuration</li>
+                      <li> Know how to customize the reporting created by the OpenSDK</li>
+                    </ol>
+                </div>
+                  
               </div>
               <div className='col-md-4'>
-                <img src={item} />
+                  <img src={item} className={styles.rt_img}/>
               </div>
             </div>
           </div>

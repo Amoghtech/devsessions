@@ -39,8 +39,8 @@ h2{
     height: 100%;
 }
 .para{
-    letter-spacing: 1px;
-    line-height: 23px;
+    /* letter-spacing: 1px;
+    line-height: 23px; */
     font-size: 1.1em;
 }
 .left_col{
@@ -55,6 +55,11 @@ h2{
 
 .contentText{
     /* text-align: justify; */
-    line-height: 28px;
-    font-size: 19px;
+    /* line-height: 28px; */
+    /* font-size: 19px; */
+}
+.rt_img{
+    height:550px;
+    margin-top: 120px;;
+
 }
