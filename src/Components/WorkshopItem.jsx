@@ -1,10 +1,9 @@
+import React from 'react';
 import { useParams } from 'react-router';
 import styles from './item.module.css';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchsingleworkshop } from '../redux/workshop-actions';
 import { makeStyles } from '@material-ui/core/styles';
@@ -12,9 +11,11 @@ import EventIcon from '@material-ui/icons/Event';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import item from '../Assests/item.svg';
 import LoadingSpinner from './Loading';
-
 import { uwsliceactions } from '../redux/userworkshop';
 import { useState, useEffect } from 'react';
+import Snackbar from '@material-ui/core/Snackbar';
+import Fade from '@material-ui/core/Fade';
+
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
@@ -38,14 +39,33 @@ const useStyles = makeStyles({
 });
 
 const WorkshopItem = () => {
+  const classes = useStyles();
+  const bull = <span className={classes.bullet}>•</span>;
   const data = useSelector((state) => state.single);
   const ui = useSelector((state) => state.ui);
   const [button, setbutton] = useState(false);
+  const [Snackbarstate, setsnackbarstate] = React.useState({
+    open: false,
+    vertical: 'top',
+    horizontal: 'center',
+    Transition: Fade,
+  });
   const params = useParams();
   console.log('params ', params.sessionId);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log('insideZ');
+    dispatch(fetchsingleworkshop(params.sessionId));
+  }, [fetchsingleworkshop]);
+
+
+  const handleClose = () => {
+    setsnackbarstate({ ...Snackbarstate, open: false });
+  };
   const clickhandler = () => {
     setbutton(true);
+    setsnackbarstate({ open: true });
     dispatch(
       uwsliceactions.add({
         name: data.data.name,
@@ -56,18 +76,10 @@ const WorkshopItem = () => {
       })
     );
   };
-  useEffect(() => {
-    console.log('insideZ');
-    dispatch(fetchsingleworkshop(params.sessionId));
-  }, [fetchsingleworkshop]);
-  const classes = useStyles();
-  console.log(data);
-  const bull = <span className={classes.bullet}>•</span>;
-
   return (
     <div>
       {(ui.notification !== null && ui.notification.status === 'SENDING') ||
-      data.data === null ? (
+        data.data === null ? (
         <div class='row mt-3 d-flex align-item-center justify-content-center'>
           <LoadingSpinner />
         </div>
@@ -124,6 +136,20 @@ const WorkshopItem = () => {
               </div>
             </div>
           </div>
+          {/* popup */}
+          <Snackbar
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'center',
+            }}
+            open={Snackbarstate.open}
+            onClose={handleClose}
+            autoHideDuration={2000}
+            TransitionComponent={Snackbarstate.Transition}
+            message="You are now Registered for the session!"
+            key={Snackbarstate.vertical + Snackbarstate.horizontal}
+
+          />
         </>
       )}
     </div>
