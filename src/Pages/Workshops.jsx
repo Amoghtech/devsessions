@@ -18,7 +18,7 @@ const Workshops = () => {
       <div class='row '>
         <div class='col d-flex justify-content-center align-items-center '>
           <h2 class='primary-text-color font-weight-bold'>
-            Upcomming Sessions!
+            Upcoming Sessions!
           </h2>
         </div>
       </div>
