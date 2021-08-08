@@ -1,8 +1,7 @@
 import { uisliceactions } from './uislice';
 import { workshopsliceactions } from './workshops';
-import {useDispatch} from 'react-redux'
-
-
+import { useDispatch } from 'react-redux';
+import { singlesliceactions } from './signle';
 export const sendworkshopdata = (workshopdata) => {
   return async (dispatch) => {
     const senddata = async () => {
@@ -99,4 +98,55 @@ export const fetchworkshop = () => {
   };
 };
 
+export const fetchsingleworkshop = (id) => {
+  return async (dispatch) => {
+    const fetchdata = async () => {
+      dispatch(
+        uisliceactions.setnotification({
+          status: 'SENDING',
+          message: 'SENDING DATA',
+        })
+      );
+      let url = `https://robohacks-e41e8-default-rtdb.firebaseio.com/workshops/${id}.json`;
+console.log(url)
+      const res = await fetch(url);
+      if (!res.ok) {
+        throw new Error('Could not fetch data');
+      }
 
+      const data = await res.json();
+
+      return { ...data };
+    };
+    try {
+      console.log('id ', id);
+      const data = await fetchdata();
+      console.log(data)
+      dispatch(singlesliceactions.setdata({
+        name:data.name.value,
+        nameorg:data.nameorg.value,
+        longdesc:data.longdesc.value,
+        shortdesc:data.shortdesc.value,
+        date:data.date
+      }))
+      dispatch(
+        uisliceactions.setnotification({
+          status: 'DONE',
+          message: 'SENDED',
+        })
+      );
+      // dispatch(
+      //   workshopsliceactions.replaceworkshop({
+      //     items: data.items,
+      //   })
+      // );
+    } catch (err) {
+      dispatch(
+        uisliceactions.setnotification({
+          status: 'ERROR',
+          message: 'Could fetch data',
+        })
+      );
+    }
+  };
+};
