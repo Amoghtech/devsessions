@@ -12,6 +12,8 @@ import EventIcon from '@material-ui/icons/Event';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import item from '../Assests/item.svg';
 import LoadingSpinner from './Loading';
+
+import { uwsliceactions } from '../redux/userworkshop';
 import { useState, useEffect } from 'react';
 const useStyles = makeStyles({
   root: {
@@ -38,10 +40,22 @@ const useStyles = makeStyles({
 const WorkshopItem = () => {
   const data = useSelector((state) => state.single);
   const ui = useSelector((state) => state.ui);
-  // const [data, setdata] = useState(null);
+  const [button, setbutton] = useState(false);
   const params = useParams();
   console.log('params ', params.sessionId);
   const dispatch = useDispatch();
+  const clickhandler = () => {
+    setbutton(true);
+    dispatch(
+      uwsliceactions.add({
+        name: data.data.name,
+        nameorg: data.data.nameorg,
+        longdesc: data.data.longdesc,
+        shortdesc: data.data.shortdesc,
+        date: data.data.date,
+      })
+    );
+  };
   useEffect(() => {
     console.log('insideZ');
     dispatch(fetchsingleworkshop(params.sessionId));
@@ -51,11 +65,11 @@ const WorkshopItem = () => {
   const bull = <span className={classes.bullet}>•</span>;
 
   return (
-    <div >
+    <div>
       {(ui.notification !== null && ui.notification.status === 'SENDING') ||
       data.data === null ? (
         <div class='row mt-3 d-flex align-item-center justify-content-center'>
-        <LoadingSpinner />
+          <LoadingSpinner />
         </div>
       ) : (
         <>
@@ -70,10 +84,12 @@ const WorkshopItem = () => {
                   <p className={styles.para}>{data.data.shortdesc}</p>
                   <button
                     type='button'
-                    class='btn btn-primary ms-2'
+                    class={`tn btn-primary ms-2`}
                     style={{ width: '150px' }}
+                    onClick={clickhandler}
+                    disabled={button}
                   >
-                    Register
+                    {button ? 'Registered' : ' Register'}
                   </button>
                 </div>
               </div>

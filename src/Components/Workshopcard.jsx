@@ -51,11 +51,13 @@ const WorkshopCard = (props) => {
               </span>
             </div>
             <div class='mt-4 '>
-              <button class='text-white border rounded py-2 px-4 dark-primary-color  '>
+              <button
+                onClick={clickhandler}
+                disabled={props.dis}
+                class='text-white border rounded py-2 px-4 dark-primary-color  '
+              >
                 {' '}
-                <h6 class='m-0' onClick={clickhandler}>
-                  Register
-                </h6>
+                <h6 class='m-0'>{props.dis ? 'Registered' : 'Register'}</h6>
               </button>
             </div>
           </div>
