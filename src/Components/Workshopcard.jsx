@@ -31,7 +31,8 @@ const WorkshopCard = (props) => {
                 <span className='part_icon '>
                   <SupervisorAccountIcon />
                 </span>
-                <span className={`${styles.part_span} ms-2`}>23</span>{' '}
+           
+                <span className={`${styles.part_span} ms-2`}>{Math.floor(Math.random() * (50 - 30) + 30)}</span>{' '}
                 <span className={`${styles.part_span2} ms-2`}>
                   participants
                 </span>{' '}

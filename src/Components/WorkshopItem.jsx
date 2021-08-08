@@ -55,7 +55,6 @@ const WorkshopItem = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('insideZ');
     dispatch(fetchsingleworkshop(params.sessionId));
   }, [fetchsingleworkshop]);
 
