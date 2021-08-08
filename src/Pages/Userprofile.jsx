@@ -28,16 +28,16 @@ const Workshops = () => {
       <div class='row '>
         <div class='col d-flex justify-content-center align-items-center '>
           <h2 class='primary-text-color font-weight-bold'>
-            Registered Sessions!
+            Your Registered Sessions!
           </h2>
         </div>
       </div>
       <div class='row mt-3 d-flex align-item-center justify-content-center'>
-        
+
         {w.items.map((w) => (
           <WorkshopCard
-          key={w.id}
-          id={w.id}
+            key={w.id}
+            id={w.id}
             onRegisterClick={handleClick}
             name={w.name.value}
             shortdesc={w.shortdesc.value}
