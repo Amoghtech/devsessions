@@ -72,6 +72,7 @@ const WorkshopItem = () => {
         longdesc: data.data.longdesc,
         shortdesc: data.data.shortdesc,
         date: data.data.date,
+        tag:data.data.tag
       })
     );
   };
@@ -118,7 +119,7 @@ const WorkshopItem = () => {
                     </div>
                     <div className='mb-3'>
                       <LocalOfferIcon fontSize='small' />
-                      <span class='bg-light border rounded'>#IOT</span>
+                      <span class='bg-light border rounded'>{data.data.tag}</span>
                     </div>
                   </CardContent>
                 </Card>

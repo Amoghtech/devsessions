@@ -45,6 +45,7 @@ const Workshops = () => {
             date={w.date}
             nameorg={w.nameorg}
             dis={true}
+            tag={w.tag}
           />
         ))}
         <Snackbar

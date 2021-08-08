@@ -127,7 +127,8 @@ console.log(url)
         nameorg:data.nameorg.value,
         longdesc:data.longdesc.value,
         shortdesc:data.shortdesc.value,
-        date:data.date
+        date:data.date,
+        tag:data.tag
       }))
       dispatch(
         uisliceactions.setnotification({

@@ -48,7 +48,7 @@ const WorkshopCard = (props) => {
             <div className='tag'>
               <LocalOfferIcon fontSize='small' />
               <span className='ms-3'>
-                <button class='bg-light border rounded'>#IOT</button>
+                <button class='bg-light border rounded'>{props.tag}</button>
               </span>
             </div>
             <div class='mt-4 '>

@@ -33,6 +33,7 @@ const Workshops = () => {
             shortdesc={w.shortdesc.value}
             longdesc={w.longdesc.value}
             date={w.date}
+            tag={w.tag}
             nameorg={w.nameorg.value}
           />
         ))}
