@@ -7,6 +7,7 @@ import Loading from '../Components/Loading';
 const Workshops = () => {
   const dispatch = useDispatch();
   const workshop = useSelector((state) => state.workshops);
+  const auth = useSelector((state) => state.auth);
   const ui = useSelector((state) => state.ui);
   useEffect(() => {
     dispatch(fetchworkshop());
@@ -34,6 +35,7 @@ const Workshops = () => {
             longdesc={w.longdesc.value}
             date={w.date}
             tag={w.tag}
+            islogin={auth.islogin}
             nameorg={w.nameorg.value}
           />
         ))}

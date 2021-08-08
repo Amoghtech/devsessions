@@ -9,6 +9,8 @@ import Fade from '@material-ui/core/Fade';
 
 const Workshops = () => {
   const dispatch = useDispatch();
+  const auth = useSelector((state) => state.auth);
+
   const w = useSelector((state) => state.uw);
   const [state, setState] = React.useState({
     open: false,
@@ -46,6 +48,8 @@ const Workshops = () => {
             nameorg={w.nameorg}
             dis={true}
             tag={w.tag}
+            islogin={auth.islogin}
+
           />
         ))}
         <Snackbar

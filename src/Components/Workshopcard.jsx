@@ -31,8 +31,9 @@ const WorkshopCard = (props) => {
                 <span className='part_icon '>
                   <SupervisorAccountIcon />
                 </span>
-           
-                <span className={`${styles.part_span} ms-2`}>{Math.floor(Math.random() * (50 - 30) + 30)}</span>{' '}
+                <span className={`${styles.part_span} ms-2`}>
+                  {Math.floor(Math.random() * (50 - 30) + 30)}
+                </span>{' '}
                 <span className={`${styles.part_span2} ms-2`}>
                   participants
                 </span>{' '}
@@ -52,14 +53,16 @@ const WorkshopCard = (props) => {
               </span>
             </div>
             <div class='mt-4 '>
-              <button
-                onClick={clickhandler}
-                disabled={props.dis}
-                class='text-white border rounded py-2 px-4 dark-primary-color  '
-              >
-                {' '}
-                <h6 class='m-0'>{props.dis ? 'Registered' : 'Register'}</h6>
-              </button>
+              {props.islogin && (
+                <button
+                  onClick={clickhandler}
+                  disabled={props.dis}
+                  class='text-white border rounded py-2 px-4 dark-primary-color  '
+                >
+                  {' '}
+                  <h6 class='m-0'>{props.dis ? 'Registered' : 'Register'}</h6>
+                </button>
+              )}
             </div>
           </div>
         </div>
