@@ -35,7 +35,7 @@ const Workshops = () => {
         </div>
       </div>
       <div class='row mt-3 d-flex align-item-center justify-content-center'>
-
+{w.items.length===0 && <h3 class="text-center" >No Registered sessions found</h3>}
         {w.items.map((w) => (
           <WorkshopCard
             key={w.id}
