@@ -13,7 +13,6 @@ import { useEffect } from 'react';
 import Userprofile from './Pages/Userprofile';
 export default function App() {
   const auth = useSelector((state) => state.auth);
-
   let routes;
   if (auth.islogin) {
     routes = (
