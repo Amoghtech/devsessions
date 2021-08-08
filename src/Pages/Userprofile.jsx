@@ -39,11 +39,11 @@ const Workshops = () => {
           key={w.id}
           id={w.id}
             onRegisterClick={handleClick}
-            name={w.name.value}
-            shortdesc={w.shortdesc.value}
-            longdesc={w.longdesc.value}
+            name={w.name}
+            shortdesc={w.shortdesc}
+            longdesc={w.longdesc}
             date={w.date}
-            nameorg={w.nameorg.value}
+            nameorg={w.nameorg}
             dis={true}
           />
         ))}
