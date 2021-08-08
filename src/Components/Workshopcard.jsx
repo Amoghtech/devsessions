@@ -3,7 +3,13 @@ import styles from './Workshopcard.module.css';
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import EventIcon from '@material-ui/icons/Event';
+import { useHistory } from 'react-router';
 const WorkshopCard = (props) => {
+  const history = useHistory();
+  const clickhandler = () => {
+    history.push(`/sessions/${props.id}`);
+  };
+
   return (
     <div>
       <div className='container shadow p-4 my-3'>
@@ -47,7 +53,9 @@ const WorkshopCard = (props) => {
             <div class='mt-4 '>
               <button class='text-white border rounded py-2 px-4 dark-primary-color  '>
                 {' '}
-                <h6 class='m-0'>Register</h6>
+                <h6 class='m-0' onClick={clickhandler}>
+                  Register
+                </h6>
               </button>
             </div>
           </div>

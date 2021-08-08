@@ -99,31 +99,4 @@ export const fetchworkshop = () => {
   };
 };
 
-// export const fetchsingleworkshop = async (workshopid) => {
-  
-//   const fetchdata = async () => {
-//     const res = await fetch(
-//       `https://robohacks-e41e8-default-rtdb.firebaseio.com/workshops.json/${workshopid}.json`
-//     );
-//     if (!res.ok) {
-//       throw new Error('Could not fetch data');
-//     }
-
-//     const data = await res.json();
-
-//     return { id: workshopid, ...data };
-//   };
-//    fetchdata().then(data=>{
-
-//    }).catch(err=>{
-
-//     dispatch(
-//       uisliceactions.setnotification({
-//         status: 'ERROR',
-//         message: 'Could fetch data',
-//       })
-//     );
-//    })
-//     return data;
-//   }
 

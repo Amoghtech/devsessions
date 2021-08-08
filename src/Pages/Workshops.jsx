@@ -28,6 +28,8 @@ const Workshops = () => {
         )}
         {workshop.items.map((w) => (
           <WorkshopCard
+          key={w.id}
+          id={w.id}
             name={w.name.value}
             shortdesc={w.shortdesc.value}
             longdesc={w.longdesc.value}
